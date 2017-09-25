@@ -53,5 +53,5 @@ app.get("/showdb", function(req, result){
 	
 })
 
-// var bodyParser = require('body-parser');
-// var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
