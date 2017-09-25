@@ -9,7 +9,7 @@ app.listen(app.get('port'), function(){
 });
 
 app.get("/", function(req, res){
-	console.log("Hi Home.ejs");
+	console.log("Hi Home");
 	res.render("home.ejs");
 });
 
