@@ -39,7 +39,8 @@ app.get("/showdb", function(req, result){
 		if(err){
 			return console.error("error connect db", err);
 		}
-		client.query('SELECT "id", "username" FROM "LOGINS"', function(err, res) {		
+		client.query('SELECT "LOGINS"."id", "PARAMETER"."id", "LOGINS"."username", "PARAMETER"."heartRate", "PARAMETER"."spo2" FROM "LOGINS", "PARAMETER" WHERE "LOGINS"."id" = "PARAMETER"."id"', function(err, res) {
+		// client.query('SELECT "id", "username" FROM "LOGINS"', function(err, res) {		
 			done();
 			if (err) {
 				res.end();		//End connect. end load page
@@ -50,8 +51,54 @@ app.get("/showdb", function(req, result){
 			result.render("showdb.ejs", {userlist:res})
 		});
 	});
-	
 })
 
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+//show form add info
+app.get("/add", function(req, res){
+	res.render("addUser.ejs");
+});
+var loginTable = '"LOGINS"';
+var parameterTable = '"PARAMETER"';
+
+//insert database
+app.post("/add",urlencodedParser, function(req, res){
+	
+	pool.connect(function(err, client, done) {
+		if(err){
+			return console.log('error client from pool', err);
+		}
+		var user = req.body.txtUser;
+		var pass = req.body.txtPass;
+		// var spo2 = req.body.txtSPO2;
+		// var heartRate = req.body.txtHeartRate;
+		
+		console.log('Giá trị username: '+ user);
+		
+		client.query("INSERT INTO "+ loginTable +" (username, password, ) VALUES ('" + user + "', '" + pass + "')", function(err, result) {
+		// client.query('INSERT INTO "LOGINS"("username", "password") VALUES (user, pass)', function(err, result) {
+		// client.query("INSERT INTO LOGINS(username, password) VALUES ('" + user + "', '" + pass + "')", function(err, result) {
+		// client.query("INSERT INTO LOGINS(username, password) VALUES('"+username+"', '"+password+"')", function(err, result) {
+			done();
+
+			if (err) {
+				res.end();
+				return console.error('error running query', err);
+			}
+
+			console.log("má insert hoài không được");
+						// result.render("showdb.ejs", {userlist:res})
+						// res.render("showdb.ejs")
+						// result.render("showdb.ejs")		
+						// res.send("Completed new User");	
+						res.redirect("/showdb");
+		});
+		// client.query("INSERT INTO "+ parameterTable +" (spo2, heartRate, ) VALUES ('" + spo2 + "', '" + heartRate + "')", function(err, result) {
+
+		
+	});
+
+	// res.send("Completed new User")
+});
