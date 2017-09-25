@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Show database demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+	<style type="text/css">
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 70%;
+		}
+
+		td, th {
+			border: 1px solid #000000;
+			text-align: left;
+			padding: 10px;
+		}
+		tr:nth-child(even) {
+			background-color: #dddddd;
+		}
+	</style>
+</head>
+<body>
+	<div class="parameter">
+		<h2>User's Parameter</h2>
+		<p>Show parameter demo:</p>         
+		<table class="table user-paremeter">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Username</th>
+					<th>Heartrate</th>
+					<th>SPO2</th>
+					<th>Change</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% userlist.rows.forEach(function(info){ %>
+				<tr>
+					<td><%= info.id %></td>
+					<td><%= info.username %></td>
+					<td><%= info.heartRate %></td> 
+					<td><%= info.spo2 %></td>
+					<td><a href="../update/<%= info.id %>">Update</a> - <a href="../delete/<%= info.id %>">Delete</a></td>	
+				</tr>
+				<% }); %>
+
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td><a href="../add">Add</a></td>
+				</tr>				
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
+
