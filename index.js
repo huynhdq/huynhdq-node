@@ -33,17 +33,18 @@ var pool = new pg.Pool({
 		// pool.end()
 // });
 
-app.get("/showdb", function(req, result){
+app.get("/showlist", function(req, result){
 	console.log("hi start");
 	pool.connect(function(err, client, done){
 		if(err){
 			return console.error("error connect db", err);
 		}
 		client.query('SELECT "LOGINS"."id", "PARAMETER"."id", "LOGINS"."username", "PARAMETER"."heartRate", "PARAMETER"."spo2" FROM "LOGINS", "PARAMETER" WHERE "LOGINS"."id" = "PARAMETER"."id"', function(err, res) {
+		// client.query('SELECT "PARAMETER_USER"."Personid", "INFO_USER"."id", "PARAMETER_USER"."tiemstamp", "INFO_USER"."username", "PARAMETER_USER"."heartRate", "PARAMETER_USER"."spo2" FROM "INFO_USER", "PARAMETER_USER" WHERE "INFO_USER"."personid" = "PARAMETER_USER"."personid"', function(err, res) {
 		// client.query('SELECT "id", "username" FROM "LOGINS"', function(err, res) {		
 			done();
 			if (err) {
-				res.end();		//End connect. end load page
+				// res.end();		//End connect. end load page
 				return console.error(err.stack);
 			}
 			console.log(res.rows[0]);
@@ -62,43 +63,83 @@ app.get("/add", function(req, res){
 });
 var loginTable = '"LOGINS"';
 var parameterTable = '"PARAMETER"';
-
+//#region 
 //insert database
 app.post("/add",urlencodedParser, function(req, res){
-	
-	pool.connect(function(err, client, done) {
+	pool.connect(process.env.DATABASE_URL, function(err, client, done) {
 		if(err){
 			return console.log('error client from pool', err);
 		}
 		var user = req.body.txtUser;
 		var pass = req.body.txtPass;
-		// var spo2 = req.body.txtSPO2;
-		// var heartRate = req.body.txtHeartRate;
-		
 		console.log('Giá trị username: '+ user);
-		
-		client.query("INSERT INTO "+ loginTable +" (username, password, ) VALUES ('" + user + "', '" + pass + "')", function(err, result) {
+		res.end();
+		// if (err) throw err
+		// var value = req.body;
+		// value.push()
+		// client.query("INSERT INTO "+ loginTable +" (username, password) VALUES ('" + user + "', '" + pass + "')", function(err, result) {
+
 		// client.query('INSERT INTO "LOGINS"("username", "password") VALUES (user, pass)', function(err, result) {
 		// client.query("INSERT INTO LOGINS(username, password) VALUES ('" + user + "', '" + pass + "')", function(err, result) {
 		// client.query("INSERT INTO LOGINS(username, password) VALUES('"+username+"', '"+password+"')", function(err, result) {
-			done();
+			// done();
 
-			if (err) {
-				res.end();
-				return console.error('error running query', err);
-			}
+			// if (err) {
+				// res.end();
+				// return console.error('error running query', err);
+			// }
 
-			console.log("má insert hoài không được");
+			// console.log("má insert hoài không được");
 						// result.render("showdb.ejs", {userlist:res})
 						// res.render("showdb.ejs")
 						// result.render("showdb.ejs")		
 						// res.send("Completed new User");	
-						res.redirect("/showdb");
-		});
-		// client.query("INSERT INTO "+ parameterTable +" (spo2, heartRate, ) VALUES ('" + spo2 + "', '" + heartRate + "')", function(err, result) {
-
-		
+						// res.redirect("/showdb");
+					// });
 	});
 
 	// res.send("Completed new User")
+});
+
+// console.log(data.toString());
+//#endregion
+
+// http://localhost:5000/api?personid=2&timestamp=10-15-2017-16:12:00&heartrate=98&spo2=90
+app.get('/api', function(req, res) {
+	var personid = req.param('personid');
+	var timestamp = "'" + req.param('timestamp') + "'";	//10-15-2017-16-12-00
+	
+	var heartrate = req.param('heartrate');
+	var spo2 = req.param('spo2');
+	res.send(personid + ' ' + timestamp + ' ' + spo2 + ' ' + heartrate);
+	var sql_sel = "SELECT * FROM INFO_USER WHERE personid = " + personid;
+	var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(" + personid + ", " + timestamp + ", " + heartrate + ", " + spo2 + ")";
+	pool.connect(function(err, client, done){
+		if(err){
+			return console.error("error connect db at API: ", err);
+		}
+		client.query(sql_sel, function(err, res){
+			if(res.rows[0] != null){
+				// console.log(res.rows[0]);
+				client.query(sql_ins,  function(err0, res0){
+					if (err0) {
+						// res.end();		//End connect. end load page
+						return console.error('Insert failed...', err0.stack);
+					}
+					console.log('Inserting');	
+					done();
+				});
+			}
+			else
+				console.log('nullll')
+			// }
+			// else{
+			// 	
+			// 	});
+		// 	}
+		});
+		console.log('Completed insert');
+		// result.render("showdb.ejs");
+		// result.render("showdb.ejs", {userlist:res})
+	});
 });
