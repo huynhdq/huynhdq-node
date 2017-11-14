@@ -2,6 +2,8 @@ var express = require("express");
 var app = express();
 app.set("view engine", "ejs");
 app.set("views", "./views");
+app.use('/lib_chart', express.static(__dirname + '/lib_chart'));
+app.use('/bootstrap', express.static(__dirname + '/bootstrap'));
 app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function(){
@@ -105,6 +107,7 @@ app.post("/add",urlencodedParser, function(req, res){
 //#endregion
 
 // http://localhost:5000/api?personid=2&timestamp=10-15-2017-16:12:00&heartrate=98&spo2=90
+// https://huynhdq-nodejs.herokuapp.com/api?personid=2&timestamp=10-30-2017-03-10-00&heartrate=98&spo2=90
 app.get('/api', function(req, res) {
 	var personid = req.param('personid');
 	var timestamp = "'" + req.param('timestamp') + "'";	//10-15-2017-16-12-00
