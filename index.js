@@ -129,14 +129,13 @@ app.get('/api', function (req, res) {
 						// res.end();		//End connect. end load page
 						return console.error('Insert failed...', err0.stack);
 					}
-					console.log('Inserting');
+					console.log('Completed insert');
 					done();
 				});
 			}
 			else
 				console.log('null')
 		});
-		console.log('Completed insert');
 	});
 });
 // localhost:5000/key?id=0
@@ -149,27 +148,15 @@ app.get('/key', function (req, res) {
 		}
 		client.query(sql_data, function (err0, response) {
 			if (err0) {
-				// res.end();		//End connect. end load page
+				res.end();		//End connect. end load page
 				return console.error('Insert failed...', err0.stack);
 			}
-			console.log('Inserting');
 			done();
-			// res.send(JSON.stringify({ "a": personid }));
-			// Lam sao render data vua colect duoc
-			// var results = JSON.parse(response);
-			var results = JSON.stringify(response);			
-			console.log(results);
+			var json_str = JSON.stringify(response);
+			var json_obj = JSON.parse(json_str);
+			console.log(json_obj.rows)
 			res.setHeader('Content-Type', 'application/json');
-			res.status(200).send(results);
-			// res.writeHead(200, {
-            //     'Content-Type' : 'x-application/json'
-            // });
-			// res.end(results);
-			// response.end(JSON.stringify(_.flatten(_.compact(results))));
+			res.status(200).send(json_obj.rows)
 		});
 	});
-	console.log('Completed insert');
-	res.setHeader('Content-Type', 'application/json');
-	// res.send(JSON.stringify({ "a": personid }));
-	// res.end('Welcome user');
 });
