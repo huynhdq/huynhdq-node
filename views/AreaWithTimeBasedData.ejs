@@ -1,0 +1,122 @@
+<!-- Styles -->
+<style>
+    #chartdiv {
+        width: 100%;
+        height: 500px;
+    }
+</style>
+
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<!-- <script src="libs/jquery/jquery.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+<!-- Chart code -->
+<script>
+     var chartData;//= generateChartData();
+    //var chartData = [{ timestamp: '2017-10-15 16:13:20', spo2: '80' }]
+    // { timestamp: '2017-10-15 16:13:30', spo2: '100' },
+    // { timestamp: '2017-10-15 16:13:40', spo2: '100' },
+    // { timestamp: '2017-10-15 16:13:50', spo2: '99' },
+    // { timestamp: '2017-10-15 16:14:00', spo2: '70' },
+    // { timestamp: '2017-10-15 16:14:10', spo2: '90' },
+    // { timestamp: '2017-10-15 16:13:00', spo2: '90' },
+    // { timestamp: '2017-10-15 16:13:10', spo2: '90' }]
+    // var chartData = http://localhost:5000/key?id=0 //problem
+    $.get("http://localhost:5000/key", {
+        id: 0
+    }, function (data, status) {
+        chartData = data;
+        console.log(chartData);
+        ve();
+    })
+    var chart;
+    function ve(){
+        chart = AmCharts.makeChart("chartdiv", {
+        "type": "serial",
+        "theme": "light",
+        "marginRight": 80,
+        "dataProvider": chartData,
+        "valueAxes": [{
+            "position": "left",
+            "title": "Unique visitors"
+        }],
+        "graphs": [{
+            "id": "g1",
+            "fillAlphas": 0.4,
+            "valueField": "spo2",
+            "balloonText": "<div style='margin:5px; font-size:19px;'>spo2:<b>[[value]]</b></div>"
+        }],
+        "chartScrollbar": {
+            "graph": "g1",
+            "scrollbarHeight": 80,
+            "backgroundAlpha": 0,
+            "selectedBackgroundAlpha": 0.1,
+            "selectedBackgroundColor": "#888888",
+            "graphFillAlpha": 0,
+            "graphLineAlpha": 0.5,
+            "selectedGraphFillAlpha": 0,
+            "selectedGraphLineAlpha": 1,
+            "autoGridCount": true,
+            "color": "#AAAAAA"
+        },
+        // "chartCursor": {
+        //     "categoryBalloonDateFormat": "JJ:NN, DD MMMM",
+        //     "cursorPosition": "mouse"
+        // },
+        "categoryField": "timestamp",
+        "categoryAxis": {
+            "minPeriod": "mm",
+            "parseDates": true
+        },
+        "export": {
+            "enabled": true,
+            "dateFormat": "YYYY-MM-DD HH:NN:SS"
+        }
+    });
+    chart.addListener("dataUpdated", zoomChart);
+    // when we apply theme, the dataUpdated event is fired even before we add listener, so
+    // we need to call zoomChart here
+    //zoomChart();
+
+    } 
+    function zoomChart() {
+        // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+        chart.zoomToIndexes(chartData.length - 250, chartData.length - 100);
+    }
+    
+    // this method is called when chart is first inited as we listen for "dataUpdated" event
+    
+
+    // generate some random data, quite different range
+    function generateChartData() {
+        var chartData = [];
+        // current date
+        var firstDate = new Date();
+        // now set 500 minutes back
+        firstDate.setMinutes(firstDate.getDate() - 1000);
+
+        // and generate 500 data items
+        var spo2 = 500;
+        for (var i = 0; i < 500; i++) {
+            var newDate = new Date(firstDate);
+            // each time we add one minute
+            newDate.setMinutes(newDate.getMinutes() + i);
+            // some random number
+            spo2 += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+            // add data item to the array
+            chartData.push({
+                timestamp: newDate,
+                spo2: spo2
+            });
+        }
+        return chartData;
+    }
+</script>
+
+<!-- HTML -->
+<div id="chartdiv"></div>

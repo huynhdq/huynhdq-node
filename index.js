@@ -1,9 +1,25 @@
 var express = require("express");
 var app = express();
+var random = require("random-js")();
+var datetime = require('node-datetime');
+
+// app.all
+// app.all('*',function(req,res,next)
+// {
+//     if (!req.get('Origin')) return next();
+
+//     res.set('Access-Control-Allow-Origin', 'http://localhost:5000');
+//     res.set('Access-Control-Allow-Methods','GET,POST');
+//     res.set('Access-Control-Allow-Headers','X-Requested-With,Content-Type');
+
+//     if ('OPTIONS' == req.method) return res.send(200);
+
+//     next();
+// });
 app.set("view engine", "ejs");
 app.set("views", "./views");
-app.use('/lib_chart', express.static(__dirname + '/lib_chart'));
-app.use('/bootstrap', express.static(__dirname + '/bootstrap'));
+app.use('/libs', express.static(__dirname + '/libs'));
+// app.use('/bootstrap', express.static(__dirname + '/bootstrap'));
 app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function () {
@@ -12,7 +28,8 @@ app.listen(app.get('port'), function () {
 
 app.get("/", function (req, res) {
 	console.log("Hi Home");
-	res.render("home.ejs");
+	// res.render("home.ejs");
+	res.render("AreaWithTimeBasedData.ejs");
 });
 
 var pg = require('pg')
@@ -160,3 +177,50 @@ app.get('/key', function (req, res) {
 		});
 	});
 });
+
+// localhost:5000/random?start=10-30-2017 03:10:00&end=10-30-2017-03-10-00
+app.get('/random', function (req, res) {
+	var start = req.param('start');
+	var end = req.param('end');
+	var start_cre = datetime.create(start);
+	console.log(start_cre.getValue());
+	
+	// var start_format = start_cre.format();
+	// console.log(start_format);
+	// console.log(start_format.getSeconds());
+	// setTimeout(function () {
+	// 	var pastNow = pastDateTime.getTime();
+		// this would be 1420038010000
+		// console.log(pastNow);
+		// this would be 2015-01-01 00:00:10
+		// console.log(new Date(pastNow));
+	// }, 0);
+	// console.log(start);
+	// console.log(getDateTime(start));
+	for (var i = 0; i < 1; i++) {
+		var spo2 = random.integer(80, 110);
+		var heartRate = random.integer(80, 110);
+		// 10-30-2017 03:10:00
+		// console.log(start.getSeconds());
+	}
+	// console.log(spo2);
+	// console.log(heartRate);
+	res.end()
+	// var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(" + personid + ", " + timestamp + ", " + heartrate + ", " + spo2 + ")";
+})
+
+function getDateTime() {
+	var date = new Date();
+	var hour = date.getHours();
+	hour = (hour < 10 ? "0" : "") + hour;
+	var min = date.getMinutes();
+	min = (min < 10 ? "0" : "") + min;
+	var sec = date.getSeconds();
+	sec = (sec < 10 ? "0" : "") + sec;
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	month = (month < 10 ? "0" : "") + month;
+	var day = date.getDate();
+	day = (day < 10 ? "0" : "") + day;
+	return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
+}
