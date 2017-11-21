@@ -178,36 +178,69 @@ app.get('/key', function (req, res) {
 	});
 });
 
-// localhost:5000/random?start=10-30-2017 03:10:00&end=10-30-2017-03-10-00
+//http://localhost:5000/random?start=2017-11-20%2003:10:00&end=2017-11-20%2003:10:30&value=20
 app.get('/random', function (req, res) {
-	var start = req.param('start');
-	var end = req.param('end');
-	var start_cre = datetime.create(start);
-	console.log(start_cre.getValue());
-	
-	// var start_format = start_cre.format();
-	// console.log(start_format);
-	// console.log(start_format.getSeconds());
-	// setTimeout(function () {
-	// 	var pastNow = pastDateTime.getTime();
+	var start = new Date(Date.parse(req.param('start')));
+	var end = new Date(Date.parse(req.param('end')));
+	var numOfValue = function () {
+		if (req.param('value') > ((end.getTime() - start.getTime()) / (1000 * 10)))
+			return ((end.getTime() - start.getTime()) / (1000 * 10));
+		else
+			return req.param('value')
+	}
+	// console.log(numOfValue())
+	// console.log((end.getTime()-start.getTime())/1000)
+	pool.connect(function (err, client, done) {
+		if (err) {
+			return console.error("error connect db at Random: ", err);
+		}
+		else {
+			for (var i = 0; i < numOfValue(); i++) {
+				
+				var timestamp = new Date(start.getTime() + (1000 * 10 * i))
+				console.log(timestamp);
+				// var spo2 = random.integer(80, 110);
+				// var heartrate = random.integer(80, 110);
+				var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(0, " + timestamp + ", " + random.integer(80, 110) + ", " + random.integer(80, 110) + ")";
+				
+				client.query(sql_ins, function (err0, res0) {
+					if (err0) {
+						return console.error('Insert failed...', err0.stack);
+					}
+					console.log('Completed insert');
+					done();
+				});
+			}
+		}
+		// var newDate = new Date(start.getTime() + (1000*10))
+		// console.log(formatDate(newDate))
+		// console.log(start.getTime() <= end.getTime())
+		// var start_cre = datetime.create(start);
+		// console.log(start_cre.getValue());
+
+		// var start_format = start_cre.format();
+		// console.log(start_format);
+		// console.log(start_format.getSeconds());
+		// setTimeout(function () {
+		// 	var pastNow = pastDateTime.getTime();
 		// this would be 1420038010000
 		// console.log(pastNow);
 		// this would be 2015-01-01 00:00:10
 		// console.log(new Date(pastNow));
-	// }, 0);
-	// console.log(start);
-	// console.log(getDateTime(start));
-	for (var i = 0; i < 1; i++) {
-		var spo2 = random.integer(80, 110);
-		var heartRate = random.integer(80, 110);
-		// 10-30-2017 03:10:00
-		// console.log(start.getSeconds());
-	}
-	// console.log(spo2);
-	// console.log(heartRate);
-	res.end()
-	// var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(" + personid + ", " + timestamp + ", " + heartrate + ", " + spo2 + ")";
-})
+		// }, 0);
+		// console.log(start);
+		// console.log(getDateTime(start));
+
+		// console.log(spo2);
+		// console.log(heartRate);
+		res.end()
+		// var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(" + personid + ", " + timestamp + ", " + heartrate + ", " + spo2 + ")";
+	})
+});
+
+function formatDate(date) {
+	return ('{0}-{1}-{3} {4}:{5}:{6}').replace('{0}', date.getFullYear()).replace('{1}', date.getMonth() + 1).replace('{3}', date.getDay()).replace('{4}', date.getHours()).replace('{5}', date.getMinutes()).replace('{6}', date.getSeconds())
+}
 
 function getDateTime() {
 	var date = new Date();
