@@ -2,20 +2,6 @@ var express = require("express");
 var app = express();
 var random = require("random-js")();
 var datetime = require('node-datetime');
-
-// app.all
-// app.all('*',function(req,res,next)
-// {
-//     if (!req.get('Origin')) return next();
-
-//     res.set('Access-Control-Allow-Origin', 'http://localhost:5000');
-//     res.set('Access-Control-Allow-Methods','GET,POST');
-//     res.set('Access-Control-Allow-Headers','X-Requested-With,Content-Type');
-
-//     if ('OPTIONS' == req.method) return res.send(200);
-
-//     next();
-// });
 app.set("view engine", "ejs");
 app.set("views", "./views");
 app.use('/libs', express.static(__dirname + '/libs'));
@@ -29,7 +15,7 @@ app.listen(app.get('port'), function () {
 app.get("/", function (req, res) {
 	console.log("Hi Home");
 	// res.render("home.ejs");
-	res.render("AreaWithTimeBasedData.ejs");
+	res.render("multipleValueAxes.ejs");
 });
 
 var pg = require('pg')
@@ -158,7 +144,7 @@ app.get('/api', function (req, res) {
 // localhost:5000/key?id=0
 app.get('/key', function (req, res) {
 	var personid = req.param('id');
-	var sql_data = "SELECT timestamp, spo2 FROM PARAMETER_USER WHERE personid = " + personid;
+	var sql_data = "SELECT timestamp, spo2 FROM RANDOM WHERE personid = " + personid;
 	pool.connect(function (err, client, done) {
 		if (err) {
 			return console.error("error connect db at KEY: ", err);
@@ -208,7 +194,7 @@ app.get('/random', function (req, res) {
 				// console.log(timestamp.getSeconds());
 				// var spo2 = random.integer(80, 110);
 				// var heartrate = random.integer(80, 110);
-				var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(0, " + time + ", " + random.integer(80, 110) + ", " + random.integer(80, 110) + ")";
+				var sql_ins = "INSERT INTO RANDOM(personid, timestamp, heartrate, spo2) VALUES(0, " + timestamp_str + ", " + random.integer(80, 110) + ", " + random.integer(80, 110) + ")";
 				
 				client.query(sql_ins, function (err0, res0) {
 					if (err0) {

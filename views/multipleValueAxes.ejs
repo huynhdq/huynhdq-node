@@ -7,15 +7,29 @@
 </style>
 
 <!-- Resources -->
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<!-- <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="https://www.amcharts.com/lib/3/serial.js"></script>
 <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" /> -->
+
+<script src="libs/lib_chart/amcharts.js"></script>
+<script src="libs/lib_chart/serial.js"></script>
+<script src="libs/lib_chart/themes/light.js"></script>
+<script src="libs/lib_chart/plugins/export/export.min.js"></script>
+<link rel="stylesheet" href="libs/lib_chart/plugins/export/export.css" type="text/css" media="all" />
+
 
 <!-- Chart code -->
 <script>
-var chartData = generateChartData();
+// var chartData = generateChartData();
+var chartData;
+$.get("http://localhost:5000/key", {
+        id: 0
+    }, function (data, status) {
+        chartData = data;
+        console.log(chartData);
+//     })
 
 var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
@@ -52,8 +66,8 @@ var chart = AmCharts.makeChart("chartdiv", {
         "bullet": "round",
         "bulletBorderThickness": 1,
         "hideBulletsCount": 30,
-        "title": "red line",
-        "valueField": "visits",
+        "title": "SPO2",
+        "valueField": "spo2",
 		"fillAlphas": 0
     }, {
         "valueAxis": "v2",
@@ -61,18 +75,18 @@ var chart = AmCharts.makeChart("chartdiv", {
         "bullet": "square",
         "bulletBorderThickness": 1,
         "hideBulletsCount": 30,
-        "title": "yellow line",
-        "valueField": "hits",
+        "title": "Heart Rate",
+        "valueField": "heartrate",
 		"fillAlphas": 0
-    }, {
-        "valueAxis": "v3",
-        "lineColor": "#B0DE09",
-        "bullet": "triangleUp",
-        "bulletBorderThickness": 1,
-        "hideBulletsCount": 30,
-        "title": "green line",
-        "valueField": "views",
-		"fillAlphas": 0
+    // }, {
+    //     "valueAxis": "v3",
+    //     "lineColor": "#B0DE09",
+    //     "bullet": "triangleUp",
+    //     "bulletBorderThickness": 1,
+    //     "hideBulletsCount": 30,
+    //     "title": "green line",
+    //     "valueField": "views",
+	// 	"fillAlphas": 0
     }],
     "chartScrollbar": {},
     "chartCursor": {
@@ -91,6 +105,7 @@ var chart = AmCharts.makeChart("chartdiv", {
         "dateFormat": "YYYY-MM-DD HH:NN:SS"
      }
 });
+    })
 
 chart.addListener("dataUpdated", zoomChart);
 zoomChart();
@@ -104,8 +119,8 @@ function generateChartData() {
     // firstDate.setMinutes(firstDate.getDate() - 1000);
     firstDate.setSeconds(firstDate.getDate() - 1000);
     console.log(firstDate)
-        var visits = 1600;
-        var hits = 2900;
+        var spo2 = 1600;
+        var heartrate = 2900;
         var views = 8700;
 
 
@@ -117,15 +132,15 @@ function generateChartData() {
         // newDate.setMinutes(newDate.getMinutes() + i);
         newDate.setSeconds(newDate.getSeconds() + i);
         console.log(newDate)
-        visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-        hits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+        spo2 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+        heartrate += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
         views += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
 
         chartData.push({
             date: newDate,
-            visits: visits,
-            hits: hits,
-            views: views
+            spo2: spo2,
+            heartrate: heartrate,
+            // views: views
         });
     }
     return chartData;
