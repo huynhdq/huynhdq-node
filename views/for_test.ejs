@@ -1,38 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title> Page test </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="libs/jquery/jquery.min.js"></script>
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-theme.min.css">
-    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-    <div class="page-header" class="container-fluid">
-        <h1> Health Care Werable Device </h1>
-    </div>
-
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a data-toggle="tab" href="#introduce"> Introduce </a>
-        </li>
-        <li>
-            <a data-toggle="tab" href="#features"> Features </a>
-        </li>
-        <li class="pull-right">
-            <a data-toggle="tab" href="#login">Log in</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div id="introduce" class="tab-pane fade in active">
-            <h3>HOME</h3>
-            <p>Introduce about Werable device</p>
-            <!-- Styles -->
+ <!-- Styles -->
             <style>
             #miltipleData {
                 width	: 100%;
@@ -52,7 +18,7 @@
             <script src="libs/lib_chart/themes/light.js"></script>
             <script src="libs/lib_chart/plugins/export/export.min.js"></script>
             <link rel="stylesheet" href="libs/lib_chart/plugins/export/export.css" type="text/css" media="all" />
-            
+            <script src="libs/jquery/jquery.min.js"></script>
             
             <!-- Chart code -->
             <script>
@@ -65,7 +31,7 @@
             // console.log(chartData);
             // var chartData;
             var chart;
-            $.get("http://localhost:5000/key", {
+            $.get("http://localhost:5000/key_test", {
                     id: 0
                 }, function (data, status) {
                     chartData = data;
@@ -197,20 +163,3 @@
             <!-- HTML -->
             <div id="miltipleData"></div>	
             
-        </div>
-
-        <div id="features" class="tab-pane fade">
-            <h3>Features:</h3>
-            <p>Analysis chart report</p>
-
-        </div>
-
-        <div id="login" class="tab-pane fade">
-            <h3>Log in and Sign up</h3>
-            <p>Persional Infomation</p>
-
-        </div>
-    </div>
-</body>
-
-</html>

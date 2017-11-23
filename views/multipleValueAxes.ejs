@@ -29,7 +29,7 @@ $.get("http://localhost:5000/key", {
     }, function (data, status) {
         chartData = data;
         console.log(chartData);
-//     })
+    })
 
 var chart = AmCharts.makeChart("chartdiv", {
     "type": "serial",
@@ -105,7 +105,7 @@ var chart = AmCharts.makeChart("chartdiv", {
         "dateFormat": "YYYY-MM-DD HH:NN:SS"
      }
 });
-    })
+    // })
 
 chart.addListener("dataUpdated", zoomChart);
 zoomChart();
