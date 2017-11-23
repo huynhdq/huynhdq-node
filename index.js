@@ -124,7 +124,7 @@ app.post("/add", urlencodedParser, function (req, res) {
 //#endregion
 
 // http://localhost:5000/api?personid=2&timestamp=10-15-2017-16:12:00&heartrate=98&spo2=90
-// https://huynhdq-nodejs.herokuapp.com/api?personid=2&timestamp=10-30-2017-03-10-00&heartrate=98&spo2=90
+//https://huynhdq-nodejs.herokuapp.com/api?personid=0&timestamp=2017-11-23 03:10:00&heartrate=98&spo2=90
 app.get('/api', function (req, res) {
 	var personid = req.param('personid');
 	var timestamp = "'" + req.param('timestamp') + "'";	//10-15-2017-16-12-00
@@ -188,7 +188,7 @@ app.get('/random', function (req, res) {
 		else
 			return req.param('value')
 	}
-	// console.log(numOfValue())
+	console.log(numOfValue())
 	// console.log((end.getTime()-start.getTime())/1000)
 	pool.connect(function (err, client, done) {
 		if (err) {
@@ -199,9 +199,16 @@ app.get('/random', function (req, res) {
 				
 				var timestamp = new Date(start.getTime() + (1000 * 10 * i))
 				console.log(timestamp);
+				var timestamp_str = "'" + timestamp.toISOString() + "'";
+				// console.log(timestamp.getFullYear());
+				// console.log(timestamp.getMonth());
+				// console.log(timestamp.getDate());
+				// console.log(timestamp.getHours());
+				// console.log(timestamp.getMinutes());
+				// console.log(timestamp.getSeconds());
 				// var spo2 = random.integer(80, 110);
 				// var heartrate = random.integer(80, 110);
-				var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(0, " + timestamp + ", " + random.integer(80, 110) + ", " + random.integer(80, 110) + ")";
+				var sql_ins = "INSERT INTO PARAMETER_USER(personid, timestamp, heartrate, spo2) VALUES(0, " + time + ", " + random.integer(80, 110) + ", " + random.integer(80, 110) + ")";
 				
 				client.query(sql_ins, function (err0, res0) {
 					if (err0) {
