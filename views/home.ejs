@@ -34,169 +34,170 @@
             <p>Introduce about Werable device</p>
             <!-- Styles -->
             <style>
-            #miltipleData {
-                width	: 100%;
-                height	: 500px;
-            }													
+                #miltipleData {
+                    width: 100%;
+                    height: 500px;
+                }
             </style>
-            
+
             <!-- Resources -->
             <!-- <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
             <script src="https://www.amcharts.com/lib/3/serial.js"></script>
             <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
             <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
             <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" /> -->
-            
+
             <script src="libs/lib_chart/amcharts.js"></script>
             <script src="libs/lib_chart/serial.js"></script>
             <script src="libs/lib_chart/themes/light.js"></script>
             <script src="libs/lib_chart/plugins/export/export.min.js"></script>
             <link rel="stylesheet" href="libs/lib_chart/plugins/export/export.css" type="text/css" media="all" />
-            
-            
+
+
             <!-- Chart code -->
             <script>
-            // var chartData =  [{
-            //     "timestamp":"2017-11-19T20:10:00.000Z","spo2":"94","heartrate":"90"
-            // },{
-            //     "timestamp":"2017-11-19T20:10:10.000Z","spo2":"99","heartrate":"101"
-            // }]
-            // var chartData = generateChartData();
-            // console.log(chartData);
-            // var chartData;
-            var chart;
-            $.get("/key", {
+                // var chartData =  [{
+                //     "timestamp":"2017-11-19T20:10:00.000Z","spo2":"94","heartrate":"90"
+                // },{
+                //     "timestamp":"2017-11-19T20:10:10.000Z","spo2":"99","heartrate":"101"
+                // }]
+                // var chartData = generateChartData();
+                // console.log(chartData);
+                // var chartData;
+                var chart;
+                $.get("/key", {
                     id: 0
                 }, function (data, status) {
                     chartData = data;
                     console.log(chartData);
                     chart = AmCharts.makeChart("miltipleData", {
-                "type": "serial",
-                "theme": "light",
-                "legend": {
-                    "useGraphSettings": true
-                },
-                "dataProvider": chartData,
-                "synchronizeGrid":true,
-                "valueAxes": [{
-                    "id":"v1",
-                    "axisColor": "#FF6600",
-                    "axisThickness": 2,
-                    "axisAlpha": 1,
-                    "position": "left"
-                }, {
-                    "id":"v2",
-                    "axisColor": "#FCD202",
-                    "axisThickness": 2,
-                    "axisAlpha": 1,
-                    "position": "right"
-                }, {
-                    "id":"v3",
-                    "axisColor": "#B0DE09",
-                    "axisThickness": 2,
-                    "gridAlpha": 0,
-                    "offset": 50,
-                    "axisAlpha": 1,
-                    "position": "left"
-                }],
-                "graphs": [{
-                    "valueAxis": "v1",
-                    "lineColor": "#FF6600",
-                    "bullet": "round",
-                    "bulletBorderThickness": 1,
-                    "hideBulletsCount": 30,
-                    "title": "SPO2",
-                    "valueField": "spo2",
-                    "fillAlphas": 0
-                }, {
-                    "valueAxis": "v2",
-                    "lineColor": "#FCD202",
-                    "bullet": "square",
-                    "bulletBorderThickness": 1,
-                    "hideBulletsCount": 30,
-                    "title": "Heart Rate",
-                    "valueField": "heartrate",
-                    "fillAlphas": 0
-                // }, {
-                //     "valueAxis": "v3",
-                //     "lineColor": "#B0DE09",
-                //     "bullet": "triangleUp",
-                //     "bulletBorderThickness": 1,
-                //     "hideBulletsCount": 30,
-                //     "title": "green line",
-                //     "valueField": "views",
-                // 	"fillAlphas": 0
-                }],
-                "chartScrollbar": {},
-                "chartCursor": {
-                    "cursorPosition": "mouse"
-                },
-                "categoryField": "timestamp",
-                "categoryAxis": {
-                    "parseDates": true,
-                    "axisColor": "#DADADA",
-                    "minorGridEnabled": true,
-                    "minPeriod": "ss"
-                },
-                "export": {
-                    "enabled": true,
-                    //"position": "bottom-right",
-                    "dateFormat": "YYYY-MM-DD HH:NN:SS"
-                 }
-            });
+                        "type": "serial",
+                        "theme": "light",
+                        "legend": {
+                            "useGraphSettings": true
+                        },
+                        "dataProvider": chartData,
+                        "synchronizeGrid": true,
+                        "valueAxes": [{
+                            "id": "v1",
+                            "axisColor": "#FF6600",
+                            "axisThickness": 2,
+                            "axisAlpha": 1,
+                            "position": "left"
+                        }, {
+                            "id": "v2",
+                            "axisColor": "#FCD202",
+                            "axisThickness": 2,
+                            "axisAlpha": 1,
+                            "position": "right"
+                        }, {
+                            "id": "v3",
+                            "axisColor": "#B0DE09",
+                            "axisThickness": 2,
+                            "gridAlpha": 0,
+                            "offset": 50,
+                            "axisAlpha": 1,
+                            "position": "left"
+                        }],
+                        "graphs": [{
+                            "valueAxis": "v1",
+                            "lineColor": "#FF6600",
+                            "bullet": "round",
+                            "bulletBorderThickness": 1,
+                            "hideBulletsCount": 30,
+                            "title": "SPO2",
+                            "valueField": "spo2",
+                            "fillAlphas": 0
+                        }, {
+                            "valueAxis": "v2",
+                            "lineColor": "#FCD202",
+                            "bullet": "square",
+                            "bulletBorderThickness": 1,
+                            "hideBulletsCount": 30,
+                            "title": "Heart Rate",
+                            "valueField": "heartrate",
+                            "fillAlphas": 0
+                            // }, {
+                            //     "valueAxis": "v3",
+                            //     "lineColor": "#B0DE09",
+                            //     "bullet": "triangleUp",
+                            //     "bulletBorderThickness": 1,
+                            //     "hideBulletsCount": 30,
+                            //     "title": "green line",
+                            //     "valueField": "views",
+                            // 	"fillAlphas": 0
+                        }],
+                        "chartScrollbar": {},
+                        "chartCursor": {
+                            "cursorPosition": "mouse"
+                        },
+                        "categoryField": "timestamp",
+                        "categoryAxis": {
+                            "parseDates": true,
+                            "axisColor": "#DADADA",
+                            "minorGridEnabled": true,
+                            "minPeriod": "ss"
+                        },
+                        "export": {
+                            "enabled": true,
+                            //"position": "bottom-right",
+                            "dateFormat": "YYYY-MM-DD HH:NN:SS"
+                        }
+                    });
+                    chart.addListener("dataUpdated", zoomChart);
+                    zoomChart();
                 })
-            
-                
+
+
                 // })
-            
-            chart.addListener("dataUpdated", zoomChart);
-            zoomChart();
-            
-            
-            // generate some random data, quite different range
-            function generateChartData() {
-                var chartData = [];
-                var firstDate = new Date();
-                // now set 500 minutes back
-                // firstDate.setMinutes(firstDate.getDate() - 1000);
-                firstDate.setSeconds(firstDate.getDate() - 1000);
-                // console.log(firstDate)
+
+
+
+
+                // generate some random data, quite different range
+                function generateChartData() {
+                    var chartData = [];
+                    var firstDate = new Date();
+                    // now set 500 minutes back
+                    // firstDate.setMinutes(firstDate.getDate() - 1000);
+                    firstDate.setSeconds(firstDate.getDate() - 1000);
+                    // console.log(firstDate)
                     var spo2 = 90;
                     var heartrate = 90;
                     var views = 8700;
-            
-            
-                for (var i = 0; i < 10; i++) {
-                    // we create date objects here. In your data, you can have date strings
-                    // and then set format of your dates using chart.dataDateFormat property,
-                    // however when possible, use date objects, as this will speed up chart rendering.
-                    var newDate = new Date(firstDate);
-                    // newDate.setMinutes(newDate.getMinutes() + i);
-                    newDate.setSeconds(newDate.getSeconds() + (10 * i));
-                    // console.log(newDate)
-                    spo2 += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-                    heartrate += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-                    views += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
-            
-                    chartData.push({
-                        timestamp: newDate,
-                        spo2: spo2,
-                        heartrate: heartrate,
-                        // views: views
-                    });
+
+
+                    for (var i = 0; i < 10; i++) {
+                        // we create date objects here. In your data, you can have date strings
+                        // and then set format of your dates using chart.dataDateFormat property,
+                        // however when possible, use date objects, as this will speed up chart rendering.
+                        var newDate = new Date(firstDate);
+                        // newDate.setMinutes(newDate.getMinutes() + i);
+                        newDate.setSeconds(newDate.getSeconds() + (10 * i));
+                        // console.log(newDate)
+                        spo2 += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+                        heartrate += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+                        views += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+
+                        chartData.push({
+                            timestamp: newDate,
+                            spo2: spo2,
+                            heartrate: heartrate,
+                            // views: views
+                        });
+                    }
+                    return chartData;
                 }
-                return chartData;
-            }
-            
-            function zoomChart(){
-                chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1);
-            }
-            
+
+                function zoomChart() {
+                    chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1);
+                }
+
             </script>
-            
+
             <!-- HTML -->
-            <div id="miltipleData"></div>	
-            
+            <div id="miltipleData"></div>
+
         </div>
 
         <div id="features" class="tab-pane fade">
