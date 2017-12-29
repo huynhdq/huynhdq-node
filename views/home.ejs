@@ -2,216 +2,550 @@
 <html lang="en">
 
 <head>
-    <title> Page test </title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="libs/jquery/jquery.min.js"></script>
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap-theme.min.css">
-    <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Healthcare Wearable</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Favicons
+        ================================================== -->
+    <link rel="shortcut icon" href="libs/helios/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="libs/helios/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="libs/helios/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="libs/helios/img/apple-touch-icon-114x114.png">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css"  href="libs/helios/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="libs/helios/fonts/font-awesome/css/font-awesome.css">
+    
+    <!-- Stylesheet
+        ================================================== -->
+    <link rel="stylesheet" type="text/css"  href="libs/helios/css/style.css">
+    <link rel="stylesheet" type="text/css" href="libs/helios/css/prettyPhoto.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="libs/helios/js/modernizr.custom.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="libs/login/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="libs/login/css/style3.css" />
+    <link rel="stylesheet" type="text/css" href="libs/login/css/animate-custom.css" />
 </head>
 
+
 <body>
-    <div class="page-header" class="container-fluid">
-        <h1> Health Care Werable Device </h1>
+    <!-- Navigation
+        ==========================================-->
+    <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container"> 
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a class="navbar-brand" href="/"><i class="fa fa-sun-o"></i> Healthcare<strong></strong></a> </div>
+        
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#home" class="page-scroll">Trang chủ</a></li>
+            <li><a href="#services-section" class="page-scroll">Giới thiệu</a></li>
+            <li><a href="#works-section" class="page-scroll">Giao diện</a></li>
+            <li><a href="#about-section" class="page-scroll">About</a></li>
+            <li><a href="#team-section" class="page-scroll">Team</a></li>
+            <li><a href="#contact-section" class="page-scroll">Contact</a></li>
+            <li><a id="btn-logout" class="page-scroll hidden">Thoat</a></li>
+            <li><a id="fullName" class="page-scroll"></a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse --> 
+      </div>
+      <!-- /.container-fluid --> 
+    </nav>
+    
+    <!-- Header -->
+    <header class="text-center" name="home">
+      <div class="intro-text">
+        <h1>Welcome to <strong>Healthcare-Wearable</strong></h1>
+        <p>Let's take care of your health</p>
+         
+        <a id="btn-home-login" data-toggle="modal" data-target="#modal-login" class="btn btn-default btn-lg page-scroll">Login & Sign up</a>
+        <a id="btn-home-detail" href="/detail" class="btn btn-default btn-lg page-scroll hidden">Detail</a> 
+      </div>
+        
+      </header>
+    
+    <!-- Services Section -->
+    <div id="services-section" class="text-center">
+      <div class="container">
+        <div class="section-title center">
+          <h2 style="font-size:32px; font-weight: 700;">Giới thiệu Heathcare-wearable</h2>
+          <hr>
+          <div class="clearfix"></div>
+          <p>Heathcare-wearable là thiết bị đeo tay, được sử dụng để...</p>
+        </div>
+        <div class="space"></div>
+        <div class="row">
+          <div class="col-md-4 col-sm-6 service"> <i class="fa fa-desktop"></i>
+            <h4>Ứng dụng Web</h4>
+            <p>Giao diện Web rất trực quan, giúp người dùng dễ dàng tương tác và quản lý thông tin sức khỏe mọi lúc, mọi nơi.</p>
+          </div>
+          <div class="col-md-4 col-sm-6 service"> <i class="fa fa-line-chart"></i>
+            <h4>Ứng dụng Android</h4>
+            <p>Ứng dụng Android được xây dựng nhầm mục đích kết nối với thiết bị đeo tay, tạo môi trường thân thiện với người sử dụng và phát triển các chức năng tiện ích nâng cao hơn.</p>
+          </div>
+          <div class="col-md-4 col-sm-6 service"> <i class="fa fa-gears"></i>
+            <h4>Thiết bị đeo tay</h4>
+            <p>Những thiết bị phần cứng tạo nên sản phẩm Heathcare-wearable, nó là thiết bị tiết kiệm năng lượng và tích hợp những kết nối không dây thông minh Bluetooth và Wi-Fi</p>
+          </div>
+          <!-- <div class="col-md-3 col-sm-6 service"> <i class="fa fa-line-chart"></i>
+            <h4>Marketing</h4>
+            <p>Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque.</p>
+          </div> -->
+        </div>
+      </div>
     </div>
-
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active">
-            <a data-toggle="tab" href="#introduce"> Introduce </a>
-        </li>
-        <li>
-            <a data-toggle="tab" href="#features"> Features </a>
-        </li>
-        <li class="pull-right">
-            <a data-toggle="tab" href="#login">Log in</a>
-        </li>
-    </ul>
-
-    <div class="tab-content">
-        <div id="introduce" class="tab-pane fade in active">
-            <h3>HOME</h3>
-            <p>Introduce about Werable device</p>
-            <!-- Styles -->
-            <style>
-                #miltipleData {
-                    width: 100%;
-                    height: 500px;
-                }
-            </style>
-
-            <!-- Resources -->
-            <!-- <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-            <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-            <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-            <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-            <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" /> -->
-
-            <script src="libs/lib_chart/amcharts.js"></script>
-            <script src="libs/lib_chart/serial.js"></script>
-            <script src="libs/lib_chart/themes/light.js"></script>
-            <script src="libs/lib_chart/plugins/export/export.min.js"></script>
-            <link rel="stylesheet" href="libs/lib_chart/plugins/export/export.css" type="text/css" media="all" />
-
-
-            <!-- Chart code -->
-            <script>
-                // var chartData =  [{
-                //     "timestamp":"2017-11-19T20:10:00.000Z","spo2":"94","heartrate":"90"
-                // },{
-                //     "timestamp":"2017-11-19T20:10:10.000Z","spo2":"99","heartrate":"101"
-                // }]
-                // var chartData = generateChartData();
-                // console.log(chartData);
-                // var chartData;
-                var chart;
-                $.get("/key", {
-                    id: 0
-                }, function (data, status) {
-                    chartData = data;
-                    console.log(chartData);
-                    chart = AmCharts.makeChart("miltipleData", {
-                        "type": "serial",
-                        "theme": "light",
-                        "legend": {
-                            "useGraphSettings": true
-                        },
-                        "dataProvider": chartData,
-                        "synchronizeGrid": true,
-                        "valueAxes": [{
-                            "id": "v1",
-                            "axisColor": "#FF6600",
-                            "axisThickness": 2,
-                            "axisAlpha": 1,
-                            "position": "left"
-                        }, {
-                            "id": "v2",
-                            "axisColor": "#FCD202",
-                            "axisThickness": 2,
-                            "axisAlpha": 1,
-                            "position": "right"
-                        }, {
-                            "id": "v3",
-                            "axisColor": "#B0DE09",
-                            "axisThickness": 2,
-                            "gridAlpha": 0,
-                            "offset": 50,
-                            "axisAlpha": 1,
-                            "position": "left"
-                        }],
-                        "graphs": [{
-                            "valueAxis": "v1",
-                            "lineColor": "#FF6600",
-                            "bullet": "round",
-                            "bulletBorderThickness": 1,
-                            "hideBulletsCount": 30,
-                            "title": "SPO2",
-                            "valueField": "spo2",
-                            "fillAlphas": 0
-                        }, {
-                            "valueAxis": "v2",
-                            "lineColor": "#FCD202",
-                            "bullet": "square",
-                            "bulletBorderThickness": 1,
-                            "hideBulletsCount": 30,
-                            "title": "Heart Rate",
-                            "valueField": "heartrate",
-                            "fillAlphas": 0
-                            // }, {
-                            //     "valueAxis": "v3",
-                            //     "lineColor": "#B0DE09",
-                            //     "bullet": "triangleUp",
-                            //     "bulletBorderThickness": 1,
-                            //     "hideBulletsCount": 30,
-                            //     "title": "green line",
-                            //     "valueField": "views",
-                            // 	"fillAlphas": 0
-                        }],
-                        "chartScrollbar": {},
-                        "chartCursor": {
-                            "cursorPosition": "mouse"
-                        },
-                        "categoryField": "timestamp",
-                        "categoryAxis": {
-                            "parseDates": true,
-                            "axisColor": "#DADADA",
-                            "minorGridEnabled": true,
-                            "minPeriod": "ss"
-                        },
-                        "export": {
-                            "enabled": true,
-                            //"position": "bottom-right",
-                            "dateFormat": "YYYY-MM-DD HH:NN:SS"
-                        }
-                    });
-                    chart.addListener("dataUpdated", zoomChart);
-                    zoomChart();
-                })
-
-
-                // })
-
-
-
-
-                // generate some random data, quite different range
-                function generateChartData() {
-                    var chartData = [];
-                    var firstDate = new Date();
-                    // now set 500 minutes back
-                    // firstDate.setMinutes(firstDate.getDate() - 1000);
-                    firstDate.setSeconds(firstDate.getDate() - 1000);
-                    // console.log(firstDate)
-                    var spo2 = 90;
-                    var heartrate = 90;
-                    var views = 8700;
-
-
-                    for (var i = 0; i < 10; i++) {
-                        // we create date objects here. In your data, you can have date strings
-                        // and then set format of your dates using chart.dataDateFormat property,
-                        // however when possible, use date objects, as this will speed up chart rendering.
-                        var newDate = new Date(firstDate);
-                        // newDate.setMinutes(newDate.getMinutes() + i);
-                        newDate.setSeconds(newDate.getSeconds() + (10 * i));
-                        // console.log(newDate)
-                        spo2 += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-                        heartrate += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-                        views += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-
-                        chartData.push({
-                            timestamp: newDate,
-                            spo2: spo2,
-                            heartrate: heartrate,
-                            // views: views
-                        });
-                    }
-                    return chartData;
-                }
-
-                function zoomChart() {
-                    chart.zoomToIndexes(chart.dataProvider.length - 20, chart.dataProvider.length - 1);
-                }
-
-            </script>
-
-            <!-- HTML -->
-            <div id="miltipleData"></div>
-
+    <!-- Portfolio Section -->
+    <div id="works-section">
+      <div class="container"> <!-- Container -->
+        <div class="section-title text-center center">
+          <h2>Giao diện Ứng dụng</h2>
+          <hr>
+          <div class="clearfix"></div>
+          <p>Giao diện thân thiện với người sử dụng, trực quan và tiện ích. Giao diện ứng dụng giúp người dùng dễ dàng thao tác, sử dụng các chức năng trên thiết bị đeo tay và các nền tảng ứng dụng Web và ứng dụng Android.</p>
         </div>
-
-        <div id="features" class="tab-pane fade">
-            <h3>Features:</h3>
-            <p>Analysis chart report</p>
-
+        <div class="categories">
+          <ul class="cat">
+            <li>
+              <ol class="type">
+                <li><a href="#" data-filter="*" class="active">Tất cả</a></li>
+                <li><a href="#" data-filter=".web">Ứng dụng Web</a></li>
+                <li><a href="#" data-filter=".app">Ứng dụng Android</a></li>
+                <li><a href="#" data-filter=".branding">Thiết bị đeo tay</a></li>
+              </ol>
+            </li>
+          </ul>
+          <div class="clearfix"></div>
         </div>
-
-        <div id="login" class="tab-pane fade">
-            <h3>Log in and Sign up</h3>
-            <p>Persional Infomation</p>
-
+        <div class="row">
+          <div class="portfolio-items">
+            <div class="col-sm-6 col-md-3 col-lg-3 web">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="img/portfolio/01.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/01.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 app">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="img/portfolio/02.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>App Development</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/02.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 web">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="img/portfolio/03.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/03.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 web">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="img/portfolio/04.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/04.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 app">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="img/portfolio/05.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>App Development</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/05.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 branding">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="img/portfolio/06.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Branding</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="libs/helios/img/portfolio/06.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 branding app">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="img/portfolio/07.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>App Development, Branding</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="libs/helios/img/portfolio/07.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-3 col-lg-3 web">
+              <div class="portfolio-item">
+                <div class="hover-bg"> <a href="libs/helios/img/portfolio/08.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="libs/helios/img/portfolio/08.jpg" class="img-responsive" alt="Project Title"> </a> </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</body>
+    <!-- About Section -->
+    <div id="about-section">
+      <div class="container">
+        <div class="section-title text-center center">
+          <h2>About Us</h2>
+          <hr>
+          <div class="clearfix"></div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>
+        </div>
+        <div class="row">
+          <div class="col-md-6"> <img src="libs/helios/img/about.jpg" class="img-responsive"> </div>
+          <div class="col-md-6">
+            <div class="about-text">
+              <h4>Who We Are</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh ante facilisis bibendum.</p>
+              <h4>What We Do</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at. Duis sed dapibus leo nec ornare diam commodo nibh ante facilisis bibendum.</p>
+              <h4>Why Choose Us</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam. Sed commodo nibh ante facilisis bibendum dolor feugiat at.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Achievements Section -->
+    <div id="achievements" class="section dark-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-3">
+            <div class="achievement-box"> <span class="count">210</span>
+              <h4>Happy clients</h4>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3">
+            <div class="achievement-box"> <span class="count">9,500</span>
+              <h4>Working hours</h4>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3">
+            <div class="achievement-box"> <span class="count">590</span>
+              <h4>Projects completed</h4>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-3">
+            <div class="achievement-box"> <span class="count">14</span>
+              <h4>Awards won</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Section -->
+    <div id="team-section" class="text-center">
+      <div class="container">
+        <div class="section-title center">
+          <h2>Meet the Team</h2>
+          <hr>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>
+        </div>
+        <div id="row">
+          <div class="col-md-3 col-sm-6 team">
+            <div class="thumbnail"> <img src="libs/helios/img/team/01.jpg" alt="..." class="img-circle team-img">
+              <div class="caption">
+                <h3>John Doe</h3>
+                <p>Founder / CEO</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 team">
+            <div class="thumbnail"> <img src="libs/helios/img/team/02.jpg" alt="..." class="img-circle team-img">
+              <div class="caption">
+                <h3>Mike Doe</h3>
+                <p>Web Designer</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 team">
+            <div class="thumbnail"> <img src="libs/helios/img/team/03.jpg" alt="..." class="img-circle team-img">
+              <div class="caption">
+                <h3>Jane Doe</h3>
+                <p>Creative Director</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 team">
+            <div class="thumbnail"> <img src="libs/helios/img/team/04.jpg" alt="..." class="img-circle team-img">
+              <div class="caption">
+                <h3>Larry Show</h3>
+                <p>Project Manager</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact Section -->
+    <div id="contact-section" class="text-center">
+      <div class="container">
+        <div class="section-title center">
+          <h2>Contact Us</h2>
+          <hr>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamcommodo nibh ante facilisis.</p>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+          <div class="col-md-4"> <i class="fa fa-map-marker"></i>
+            <p>4321 California St,<br>
+              San Francisco, CA 12345</p>
+          </div>
+          <div class="col-md-4"> <i class="fa fa-envelope-o"></i>
+            <p>info@company.com</p>
+          </div>
+          <div class="col-md-4"> <i class="fa fa-phone"></i>
+            <p> +1 123 456 1234</p>
+          </div>
+          <hr>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+          <h3>Leave us a message</h3>
+          <form name="sentMessage" id="contactForm" novalidate>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="text" id="name" class="form-control" placeholder="Name" required="required">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="email" id="email" class="form-control" placeholder="Email" required="required">
+                  <p class="help-block text-danger"></p>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea name="message" id="message" class="form-control" rows="4" placeholder="Message" required></textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+            <div id="success"></div>
+            <button type="submit" class="btn btn-default">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div id="social-section">
+      <div class="container">
+        <div class="social">
+          <ul>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            <li><a href="#"><i class="fa fa-github"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <div class="fnav">
+          <p>Copyright &copy; Helios. Designed by <a href="http://www.templatewire.com" rel="nofollow">TemplateWire</a></p>
+        </div>
+      </div>
+    </div>
+    
 
-</html>
+
+    <!-- Modal -->
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+            <div id="container_demo">
+                <a class="hiddenanchor" id="toregister"></a>
+                <a class="hiddenanchor" id="tologin"></a>
+                <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                <div id="wrapper">
+                    <div class="form animate">
+                        <form id="f-login" autocomplete="on">
+                            <h1>Log in</h1>
+                            <p>
+                                <label for="username" class="uname" data-icon="u"> Your email or username </label>
+                                <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com" />
+                            </p>
+                            <p>
+                                <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" />
+                            </p>
+                            <p class="keeplogin">
+                                <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+                                <label for="loginkeeping">Keep me logged in</label>
+                            </p>
+                            <p class="text-danger hidden" id="notice-login">Tai khoan hoac mat khau chua dung</p>
+                            <p class="login button">
+                                <input type="submit" value="Login" />
+                            </p>
+                            <p class="change_link text-center" style="height:70px;width:100%;">
+                                Not a member yet ?
+                                <a href="#toregister" class="to_register">Join us</a>
+                            </p>
+                        </form>
+                    </div>
+
+                    <div class="form animate">
+                        <form id="f-register" class="hidden" autocomplete="on">
+                            <h1> Sign up </h1>
+                            <p>
+                                <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                                <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
+                            </p>
+                            <p>
+                                <label for="emailsignup" class="youmail" data-icon="e"> Your email</label>
+                                <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com" />
+                            </p>
+                            <p>
+                                <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                                <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO" />
+                            </p>
+                            <p>
+                                <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+                                <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"
+                                />
+                            </p>
+                            
+                            <p class="signin button">
+                                <input type="submit" value="Sign up" />
+                            </p>
+                            <p class="change_link">
+                                Already a member ?
+                                <a href="#tologin" class="to_login"> Go and log in </a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Body modal -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/jquery.1.11.1.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script type="text/javascript" src="libs/helios/js/bootstrap.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/SmoothScroll.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/jquery.counterup.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/waypoints.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/jquery.prettyPhoto.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/jquery.isotope.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/jqBootstrapValidation.js"></script> 
+    <script type="text/javascript" src="libs/helios/js/contact_me.js"></script> 
+    
+    <!-- Javascripts
+        ================================================== --> 
+    <script type="text/javascript" src="libs/helios/js/main.js"></script>
+    <script>
+    function setCookie(cname, cvalue, day) {
+        var d = new Date();
+        d.setTime(d.getTime() + (day * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+                }
+         $(".to_login").click(function () {
+            $("#f-register").addClass("hidden");
+            $("#f-login").removeClass("hidden");
+        })
+        $(".to_register").click(function () {
+            $("#f-register").removeClass("hidden");
+            $("#f-login").addClass("hidden");
+        })
+        $("#f-login").submit(function(e){
+            e.preventDefault();
+            $.get("/login", {
+                username: $("#username").val(),
+                password: $("#password").val()
+            }, function(data, status){
+                // Neu sai mat khau 
+                if(data == false){
+                    $("#notice-login").removeClass("hidden");
+                } else {
+                    setCookie("Token", data.Token, 1);
+                    setCookie("fullname", data.USERNAME, 1);
+                    window.location = "/detail";
+                }
+                
+                
+            })
+        })
+        if(getCookie("Token") != "" && getCookie("Token") != undefined){
+          $("#btn-logout").removeClass("hidden");
+          $("#btn-home-detail").removeClass("hidden");
+          $("#btn-home-login").addClass("hidden");
+          $("#fullName").text(getCookie("fullname"));
+        } 
+        $("#btn-logout").click(function(){
+            setCookie("Token", null, -1);
+            location.reload();
+        })
+        // if(getCookie("Token") != ""){
+        //     $("#tab-login").addClass("hidden");
+        //     $("#profile").removeClass("hidden");
+        //     $("#fullname").text(getCookie("fullname"));
+        // }
+    </script>
+    </body>
+    </html>

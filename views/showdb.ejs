@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<title>Show database demo</title>
 	<meta charset="utf-8">
@@ -7,14 +8,15 @@
 	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 	<div class="row">
 		<div class="col-xs-3">
@@ -22,41 +24,55 @@
 		</div>
 		<div class="col-xs-9">
 			<div class>
+			</div>
 		</div>
-	</div>
-	<div class="parameter">
-		<h2>User's Parameter</h2>
-		<p>Show parameter demo:</p>         
-		<table class="table user-paremeter">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Username</th>
-					<th>Heartrate</th>
-					<th>SPO2</th>
-					<th>Change</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% userlist.rows.forEach(function(info){ %>
-				<tr>
-					<td><%= info.id %></td>
-					<td><%= info.username %></td>
-					<td><%= info.heartRate %></td> 
-					<td><%= info.spo2 %></td>
-					<td><a href="../update/<%= info.id %>">Update</a> - <a href="../delete/<%= info.id %>">Delete</a></td>	
-				</tr>
-				<% }); %>
+		<div class="parameter">
+			<h2>User's Parameter</h2>
+			<p>Show parameter demo:</p>
+			<table class="table user-paremeter">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Username</th>
+						<th>Heartrate</th>
+						<th>SPO2</th>
+						<th>Change</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% userlist.rows.forEach(function(info){ %>
+						<tr>
+							<td>
+								<%= info.id %>
+							</td>
+							<td>
+								<%= info.username %>
+							</td>
+							<td>
+								<%= info.heartRate %>
+							</td>
+							<td>
+								<%= info.spo2 %>
+							</td>
+							<td>
+								<a href="../update/<%= info.id %>">Update</a> -
+								<a href="../delete/<%= info.id %>">Delete</a>
+							</td>
+						</tr>
+						<% }); %>
 
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td><a href="../add">Add</a></td>
-				</tr>				
-			</tbody>
-		</table>
-	</div>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td>
+									<a href="../add">Add</a>
+								</td>
+							</tr>
+				</tbody>
+			</table>
+		</div>
 </body>
+
 </html>
