@@ -170,7 +170,7 @@ app.get('/getdb', function (req, res) {
 			return console.error('Select getdb is failed...', err0.stack);
 			res.end();		//End connect. end load page			
 		}
-		console.log("ee" + response.length);
+		// console.log("ee" + response.length);
 		if(response.length > 0){ // Kiem tra rong
 			var ID = req.param('id');
 			var compareDate_start = req.param('timestart');
@@ -209,7 +209,7 @@ app.get('/getdb', function (req, res) {
 function updateUser(userId, token){
 	con.query("Update USER_DB set TOKEN = "+token+" WHERE ID = " + userId, function (err0, response) {
 		if (err0) {
-			return console.error('Update failed...', err0.stack);
+			// return console.error('Update User is failed...', err0.stack);
 			res.end();		//End connect. end load page			
 		}
 	})
@@ -221,7 +221,7 @@ app.get("/login", function(req, result){
 	
 	con.query("select ID, USERNAME from USER_DB WHERE USERNAME = '" + userName + "' and PASSWORD = '" + password + "'", function (err0, response) {
 		if (err0) {
-			return console.error('Select failed...', err0.stack);
+			// return console.error('Select login is failed...', err0.stack);
 			res.end();		//End connect. end load page			
 		}	
 
