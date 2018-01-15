@@ -47,6 +47,7 @@
   </style>
 </head>
 
+
 <body>
   <!-- Navigation
         ==========================================-->
@@ -124,8 +125,7 @@
         <hr>
         <div class="clearfix"></div>
         <p>Biểu đồ thể hiện mức biến động nhịp tim và nồng độ Oxi trong máu.</p>
-        <p>Dữ liệu được cập nhật liên tục từ thiết bị đeo tay. Dữ liệu còn có thể sử dụng để cảnh báo những hiện tượng sức khỏe
-          lạ và dự đoán những bệnh liên quan đến tim mạch</p>
+        <p>Dữ liệu được cập nhật liên tục từ thiết bị đeo tay. Dữ liệu còn có thể sử dụng để cảnh báo những hiện tượng sức khỏe lạ và dự đoán những bệnh liên quan đến tim mạch</p>
       </div>
       <div class="space"></div>
       <div id="miltipleData" style="height:500px;"></div>
@@ -135,18 +135,18 @@
             <div class="col-sm-3"></div>
             <div class="col-sm-3">
               <div class="input-group date">
-                <span class="input-group-addon">Thời gian bắt đầu</span>
+                <span class="input-group-addon">Start time</span>
                 <input type="text" id="time-start" name="timestart" class="form-control form_datetime" placeholder="Click choose time">
               </div>
             </div>
             <div class="col-sm-3">
               <div class="input-group date">
-                <span class="input-group-addon">Thời gian kết thúc</span>
+                <span class="input-group-addon">End time</span>
                 <input type="text" id="time-end" name="timeend" class="form-control form_datetime" placeholder="Click choose time">
               </div>
             </div>
             <div class="col-sm-2">
-              <button id="btn-submit" class="btn" type="submit">Xem chi tiết</button>
+              <button id="btn-submit" class="btn" type="submit">Submit</button>
             </div>
           </div>
 
@@ -170,8 +170,136 @@
         <hr>
         <div class="clearfix"></div>
         <p>Danh sách người thân được sử dụng để thông tin tình trạng sức khỏe của người dùng đến người thân của mình.</p>
-        <p>Điều này đặt biệt quan trọng trong trường hợp tình trạng sức khỏe của người dùng không ổn định, cần được cảnh báo
-          đến người thân</p>
+        <p>Điều này đặt biệt quan trọng trong trường hợp tình trạng sức khỏe của người dùng không ổn định, cần được cảnh báo đến người thân</p>
+      </div>
+      <div class="categories">
+        <ul class="cat">
+          <li>
+            <ol class="type">
+              <li>
+                <a href="#" data-filter="*" class="active">All</a>
+              </li>
+              <li>
+                <a href="#" data-filter=".web">Web Design</a>
+              </li>
+              <li>
+                <a href="#" data-filter=".app">App Development</a>
+              </li>
+              <li>
+                <a href="#" data-filter=".branding">Branding</a>
+              </li>
+            </ol>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="row">
+        <div class="portfolio-items">
+          <div class="col-sm-6 col-md-3 col-lg-3 web">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="img/portfolio/01.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/01.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 app">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="img/portfolio/02.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>App Development</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/02.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 web">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="img/portfolio/03.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/03.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 web">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="img/portfolio/04.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/04.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 app">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="img/portfolio/05.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>App Development</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="img/portfolio/05.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 branding">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="img/portfolio/06.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Branding</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="libs/helios/img/portfolio/06.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 branding app">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="img/portfolio/07.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>App Development, Branding</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="libs/helios/img/portfolio/07.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-3 col-lg-3 web">
+            <div class="portfolio-item">
+              <div class="hover-bg">
+                <a href="libs/helios/img/portfolio/08.jpg" rel="prettyPhoto">
+                  <div class="hover-text">
+                    <h4>Project Title</h4>
+                    <small>Web Design</small>
+                    <div class="clearfix"></div>
+                  </div>
+                  <img src="libs/helios/img/portfolio/08.jpg" class="img-responsive" alt="Project Title"> </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -183,8 +311,7 @@
         <hr>
         <div class="clearfix"></div>
         <p>Danh sách người thân được sử dụng để thông tin tình trạng sức khỏe của người dùng đến người thân của mình.</p>
-        <p>Điều này đặt biệt quan trọng trong trường hợp tình trạng sức khỏe của người dùng không ổn định, cần được cảnh báo
-          đến người thân</p>
+        <p>Điều này đặt biệt quan trọng trong trường hợp tình trạng sức khỏe của người dùng không ổn định, cần được cảnh báo đến người thân</p>
       </div>
       <div class="row">
         <div class="col-md-6">
